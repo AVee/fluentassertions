@@ -780,7 +780,7 @@ namespace FluentAssertions.Specs.Exceptions
         }
 
         [Fact]
-        public void When_invoking_a_function_on_a_null_subject_it_should_throw()
+        public void When_invoking_a_function_on_a_null_subject_it_should_not_throw()
         {
             // Arrange
             Does someClass = null;
@@ -789,12 +789,11 @@ namespace FluentAssertions.Specs.Exceptions
             Action act = () => someClass.Invoking(d => d.ToString());
 
             // Assert
-            act.Should().ThrowExactly<ArgumentNullException>()
-                .WithParameterName("subject");
+            act.Should().NotThrow();
         }
 
         [Fact]
-        public void When_invoking_an_action_on_a_null_subject_it_should_throw()
+        public void When_invoking_an_action_on_a_null_subject_it_should_not_throw()
         {
             // Arrange
             Does someClass = null;
@@ -803,8 +802,7 @@ namespace FluentAssertions.Specs.Exceptions
             Action act = () => someClass.Invoking(d => d.Do());
 
             // Assert
-            act.Should().ThrowExactly<ArgumentNullException>()
-                .WithParameterName("subject");
+            act.Should().NotThrow();
         }
 
         [Fact]
